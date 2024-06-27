@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <style>
+      .btn {
+        background: #00171f;
+        padding: 0.7rem 2.5rem 0.7rem 2.5rem;
+        border-radius: 5px;
+        color: #fff;
+        border: none;
+        border-radius: 9%;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        cursor: pointer;
+      }
+
+      body {
+        background: radial-gradient(circle, rgba(18, 53, 97, 1) 0%, rgba(21, 21, 79, 1) 50%, rgba(4, 9, 18, 1) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .dtt {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 7px;
+      }
+
+      .mystyle {
+        background: #00a7e1;
+      }
+
+      .centrar {
+        text-align: center;
+      }
+      .tt {
+        margin: -0;
+        font-size: xx-large;
+      }
+
+      [data-output-value] {
+        color: green;
+      }
+
+      [data-output-value^="-"] {
+        color: red;
+      }
+
+      [data-output-value="0"] {
+        color: #fff;
+      }
+
+      [data-elegir-color] {
+        color: #00a7e1;
+      }
+      [data-elegir-color="0"] {
+        color: #fff;
+      }
+
+      output {
+        margin-left: 1em;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="centrar">
+      <h1 id="counter" data-elegir-color="0">0</h1>
+      <output class="tt" id="counterTwo" data-output-value="0">0</output>
+    </div>
+
+    <div class="dtt">
+      <button id="add" class="btn">+1</button>
+      <button id="resetTwo" class="btn">Reset One</button>
+      <button id="incrementForTwo" class="btn" onclick="handleClick()">+2</button>
+    </div>
+    <div class="dtt">
+      <button id="addTwo" class="btn">+1</button>
+      <button id="decrement" class="btn">-1</button>
+      <button id="reset" class="btn">Reset</button>
+      <button id="addForTwo" class="btn">+2</button>
+    </div>
+
+    <script>
+      let countTwo = 0;
+
+      const addTwoBtn = document.getElementById("addTwo");
+      const addForTwoBtn = document.getElementById("addForTwo");
+      const lessBtn = document.getElementById("decrement");
+      const resetBtn = document.getElementById("reset");
+
+      const counterTwo = document.getElementById("counterTwo");
+
+      const updateCount = (increment) => {
+        let newValue = Number(counterTwo.value) + increment;
+        counterTwo.value = newValue;
+        counterTwo.dataset.outputValue = newValue;
+      };
+
+      addForTwoBtn.addEventListener("click", () => {
+        updateCount(2);
+      });
+
+      addTwoBtn.addEventListener("click", () => {
+        updateCount(1);
+      });
+
+      lessBtn.addEventListener("click", () => {
+        updateCount(-1);
+      });
+
+      resetBtn.addEventListener("click", () => {
+        updateCount(-Number(counterTwo.value));
+      });
+
+      const add = document.getElementById("add");
+      const reset = document.getElementById("resetTwo");
+      const counter = document.getElementById("counter");
+
+      let countData = parseInt(counter.getAttribute("data-elegir-color"));
+
+      function updateCounter() {
+        counter.textContent = countData;
+        counter.setAttribute("data-elegir-color", countData);
+      }
+
+      add.addEventListener("click", () => {
+        countData++;
+        updateCounter();
+      });
+
+      reset.addEventListener("click", () => {
+        countData = 0;
+        updateCounter();
+      });
+
+      function handleClick() {
+        countData += 2;
+        updateCounter();
+      }
+
+      updateCounter();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: grid;
+      height: 100vh;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 50px 1fr 1fr 100px;
+      grid-template-areas:
+        "header header header header"
+        "section main main aside"
+        "article main main aside"
+        "footer footer footer footer";
+    }
+
+    header {
+      background: #00ceddde;
+      grid-area: header;
+    }
+    section {
+      background: greenyellow;
+      grid-area: section;
+    }
+    article {
+      background: purple;
+      grid-area: article;
+    }
+    main {
+      background: orangered;
+      grid-area: main;
+    }
+    aside {
+      background: slateblue;
+      grid-area: aside;
+    }
+    footer {
+      background: turquoise;
+      grid-area: footer;
+    }
+
+    header,
+    section,
+    article,
+    main,
+    aside,
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (width <= 728px) {
+      body {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px auto auto auto auto 150px;
+        grid-template-areas:
+          "header"
+          "main"
+          "section"
+          "aside"
+          "article"
+          "footer";
+      }
+    }
+  </style>
+  <body>
+    <header>Header</header>
+    <section>Section</section>
+    <article>Articule</article>
+    <main>Main</main>
+    <aside>Aside</aside>
+    <footer>Footer</footer>
+  </body>
+</html>

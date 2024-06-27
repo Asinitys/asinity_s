@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal JS</title>
+    <style>
+      body {
+        display: grid;
+        place-items: center;
+        background: url(https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .modal {
+        position: fixed;
+        background: rgba(0, 0, 0, 0.5);
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 101;
+        display: none;
+      }
+      .contenido-modal {
+        position: relative;
+        height: 75%;
+        width: 50%;
+        background-image: url(https://images.unsplash.com/photo-1704965596853-c97d0f66eba0?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+      }
+      .close-modal {
+        fill: #fff;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        padding: 8px;
+        cursor: pointer;
+      }
+      .close-modal:hover {
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      button {
+        outline: none;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        border: none;
+        border-radius: 20px;
+        padding: 15px 25px;
+        box-shadow: 0 0 15px 0 #fff, inset 0 0 5px #fff;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 15px 0 #009092, inset 0 0 5px #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn-modal">Open Modal</button>
+    <div class="modal">
+      <div class="contenido-modal">
+        <svg class="close-modal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="35" height="35">
+          <path
+            d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.querySelector(".modal");
+      const btnModal = document.querySelector(".btn-modal");
+      const btnClose = document.querySelector(".close-modal");
+
+      btnClose.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+      btnModal.addEventListener("click", () => {
+        modal.style.display = "grid";
+        modal.style.placeItems = "center";
+      });
+
+      window.addEventListener("click", (e) => {
+        e.target == modal && (modal.style.display = "none");
+      });
+    </script>
+  </body>
+</html>
